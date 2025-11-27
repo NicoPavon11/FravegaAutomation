@@ -8,7 +8,7 @@ describe("Login ", () => {
       "contain",
       "/login?ReturnUrl=%2f_secure%2fmi-cuenta%2fdatos"
     );
-    cy.log('meudeus');
+
   });
 
   // it("Right Credentials", () => {
