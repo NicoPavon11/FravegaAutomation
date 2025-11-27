@@ -1,0 +1,16 @@
+{
+  "name": "fravegaautomation",
+  "version": "1.0.0",
+  "description": "Automatizaciones de test en la pagina web de Fravega",
+  "license": "ISC",
+  "author": "Nicolas Pavon",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^10.1.0",
+    "cypress": "^15.7.0"
+  }
+}
