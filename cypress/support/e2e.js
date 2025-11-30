@@ -17,3 +17,4 @@
 import './commands'
 import '../support/commands/login'
 import '../support/commands/cart'
+import '../support/commands/searchBar'
