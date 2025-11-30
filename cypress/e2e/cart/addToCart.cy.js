@@ -21,4 +21,28 @@ describe("Cart flow", () => {
       );
     });
   });
+
+  it("Go to checkout logged", () => {
+    cy.fixture("user.json").then((user) => {
+
+      cy.loginWithCredentials(user.email, user.password);
+      cy.visit('');
+      cy.AddItemCart();
+      cy.get('[data-test-id="button-cart"]').click();
+      cy.get('[data-test-id="link-go-to-cart"]').click();
+      cy.get("#endPurchaseCart").click();
+      cy.url().should("contain", "/chk-ui-headless/profile");
+    });
+  });
+
+  it("Go to checkout without login", () => {
+    cy.AddItemCart();
+    cy.get('[data-test-id="button-cart"]').click();
+    cy.get('[data-test-id="link-go-to-cart"]').click();
+    cy.get("#endPurchaseCart").click();
+    cy.url().should("contain", "/chk-ui-headless/email");
+
+
+    
+  });
 });

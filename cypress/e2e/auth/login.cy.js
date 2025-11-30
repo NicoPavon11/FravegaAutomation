@@ -11,14 +11,14 @@ describe("Login ", () => {
 
   });
 
-  // it("Right Credentials", () => {
-  //   cy.fixture("user.json").then((user) => {
-  //     cy.loginWithCredentials(user.email, user.password);
-  //   });
-  //   cy.url().should("contain", "/_secure/mi-cuenta/datos#/profile");
-  //   cy.wait(10000);
-  //   cy.logout();
-  // });
+  it("Right Credentials", () => {
+    cy.fixture("user.json").then((user) => {
+      cy.loginWithCredentials(user.email, user.password);
+    });
+    cy.url().should("contain", "/_secure/mi-cuenta/datos#/profile");
+    cy.wait(10000);
+    cy.logout();
+  });
 
   it("Wrong Credentials", () => {
     cy.get(LoginSelectors.BTNCUENTAS).click();
