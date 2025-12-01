@@ -1,9 +1,11 @@
+import { searchSelectors } from "../selectors/search";
+
 Cypress.Commands.add("searchByProductName", (name) => {
-  cy.get("[data-suggestion-index=0]").type(name);
-  cy.get(".sc-ejfMa-d.iFcilT").click();
+  cy.get(searchSelectors.SEARCH_BAR).type(name);
+  cy.get(searchSelectors.SEARCH_BTN).click();
 });
 
 Cypress.Commands.add("searchByProductId", (id) => {
-  cy.get("[data-suggestion-index=0]").type(id);
-  cy.get(".sc-ejfMa-d.iFcilT").click();
+  cy.get(searchSelectors.SEARCH_BAR).type(id);
+  cy.get(searchSelectors.SEARCH_BTN).click();
 });
