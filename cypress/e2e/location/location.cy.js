@@ -3,22 +3,39 @@ beforeEach(() => {
   cy.get(".sc-bfhvDw.sc-faUjhM.iYBOSD.jWJPFh").click();
 });
 
+describe("Location", () => {
+  it("Change location by CP (Tres Arroyos 7500)", () => {
+    cy.get('[data-test-id="geo-sticky"]').click();
+    cy.get('[data-test-id="header-geo-location-form-postal-number"]').type(
+      "7500"
+    );
+    cy.get('[data-test-id="geo-sticky"]').should(
+      "have.attr",
+      "title",
+      "Tres Arroyos"
+    );
+  });
 
-describe('Location',()=>{
-    // it('Change location by CP (Tres Arroyos 7500)',()=>{
-    //         cy.get('[data-test-id="geo-sticky"]').click();
-    //         cy.get('[data-test-id="header-geo-location-form-postal-number"]').type('7500');
-    //         cy.get('[data-test-id="geo-sticky"]').should('have.attr','title','Tres Arroyos');
-    // })
+  it("Pickup in store filter", () => {
+    cy.searchByProductId("Aire");
+    cy.get(
+      '[href="/l/?keyword=Aire&tiempo-de-entrega=entrega-inmediata"]'
+    ).click();
+    cy.get('[data-test-id="result-item"]').first().click();
+    cy.get('[data-test-id="offices-title"]')
+      .last()
+      .should("have.text", "Retiro GRATIS en sucursal ¡Retiralo YA!");
+  });
 
-    it('Pickup in store filter',()=>{
-        cy.searchByProductId('Aire');
-        cy.get('[href="/l/?keyword=Aire&tiempo-de-entrega=entrega-inmediata"]').click();
-        cy.get('[data-test-id="result-item"]').first().click();
-        cy.get('[data-test-id="offices-title"]').last().should('have.text','Retiro GRATIS en sucursal ¡Retiralo YA!');
-    })
-
-    // it('Wrong CP',()=>{})
-})
-
-
+  it("Wrong CP", () => {
+    cy.get('[data-test-id="geo-sticky"]').click();
+    cy.get('[data-test-id="header-geo-location-form-postal-number"]').type(
+      "8568"
+    );
+    cy.get('[data-test-id="button-save-postal-code"]').click();
+    cy.get(".sc-bOhtcR.sc-fFlnrN.hywpKG.gBGTmB").should(
+      "contain",
+      "Ingresá un CP válido"
+    );
+  });
+});
