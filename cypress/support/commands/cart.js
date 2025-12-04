@@ -1,6 +1,11 @@
 Cypress.Commands.add("AddItemCart", () => {
-  cy.get('[data-test-id="n1-category"]').first().click();
-  cy.get('[data-test-id="product-layout"]').first().click();
+  cy.get('[data-test-id="n1-category"]').first().as('masVendidos');
+  cy.get('@masVendidos').click();
+  cy.get('@masVendidos').should('be.visible');
+
+  cy.get('[data-test-id="product-layout"]').first().as('productCard');
+  cy.get('@productCard').click();
+  cy.get('@productCard').should('be.visible');
   cy.get(".sc-bc83eae6-5.ebtdJm")
     .first()
     .scrollIntoView()
@@ -37,7 +42,7 @@ Cypress.Commands.add("AddItemCart", () => {
 // });
 
 Cypress.Commands.add("addVarious", (number) => {
-  cy.get('[data-test-id="n1-category"]').first().click();
+  cy.get('[data-test-id="n1-category"]').should('be.visible').first().click();
 
   for (let i = 0; i < number; i++) {
     cy.get('[data-test-id="product-layout"]')
@@ -64,7 +69,7 @@ Cypress.Commands.add("addVarious", (number) => {
 });
 
 Cypress.Commands.add("emptyCart", () => {
-  cy.get('[data-test-id="button-cart"]').click();
+  cy.get('[data-test-id="button-cart"]').should('be.visible').click();
   cy.get('[data-test-id="link-go-to-cart"]').click();
   let largo = 0;
   cy.get('.sc-7039ae69-18.JnLdP>span').then(($array) => {

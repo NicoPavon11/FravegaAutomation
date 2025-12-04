@@ -3,7 +3,7 @@ import { searchSelectors } from "../../support/selectors/search";
 
 beforeEach(() => {
   cy.visit("");
-  cy.get(".sc-bfhvDw.sc-faUjhM.iYBOSD.jWJPFh").click();
+  cy.cerrarCartel();
 });
 
 describe("Search results ordered by price", () => {
@@ -55,14 +55,14 @@ describe("Search results ordered by price", () => {
   it("Order by discount", () => {
     cy.searchByProductName("plancha");
 
-    cy.get(searchSelectors.ORDER_BY_SELECT).click();
+    cy.get(searchSelectors.ORDER_BY_SELECT).should('be.visible').click();
     cy.get(searchSelectors.ORDER_SELECT_OPTIONS).eq(2).click();
 
     cy.wait(1000);
 
     cy.url().should("contain", "/l/?keyword=plancha&sorting=HIGHEST_DISCOUNT");
 
-    cy.get('[data-test-id="discount-tag"]').then(($disc) => {
+    cy.get('[data-test-id="discount-tag"]').should('be.visible').then(($disc) => {
       const ordered = [...$disc].map((el) => Number(el.innerText));
       const sorted = [...ordered].sort((a, b) => b - a);
 

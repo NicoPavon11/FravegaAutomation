@@ -8,10 +8,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start" :"npx cypress open"
+    "cy:run": "cypress run --browser chrome --spec cypress/e2e/**/*.js --env allure=true",
+    "allure:report": "npx allure generate allure-results -o allure-report",
+    "allure:open": "npx allure open",
+    "test-entero": "npm run cy:run ; npm run allure:report && npm run allure:open",
+    "last" : "node run_all.js"
   },
   "devDependencies": {
     "@faker-js/faker": "^10.1.0",
+    "@shelex/cypress-allure-plugin": "^2.41.2",
+    "allure-commandline": "^2.34.1",
     "cypress": "^15.7.0"
   }
 }

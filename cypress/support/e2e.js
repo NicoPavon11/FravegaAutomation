@@ -18,3 +18,5 @@ import './commands'
 import '../support/commands/login'
 import '../support/commands/cart'
 import '../support/commands/searchBar'
+import '../support/commands/cerrarCartel'
+import '@shelex/cypress-allure-plugin';

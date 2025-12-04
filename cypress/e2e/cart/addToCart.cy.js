@@ -1,6 +1,7 @@
 beforeEach(() => {
+
   cy.visit("");
-  cy.get(".sc-bfhvDw.sc-faUjhM.iYBOSD.jWJPFh").click();
+  cy.cerrarCartel();
 });
 
 describe("Cart flow", () => {
@@ -39,7 +40,7 @@ describe("Cart flow", () => {
       cy.AddItemCart();
       cy.get('[data-test-id="button-cart"]').click();
       cy.get('[data-test-id="link-go-to-cart"]').click();
-      cy.get("#endPurchaseCart").click();
+      cy.get("#endPurchaseCart").should('be.visible').click();
       cy.url().should("contain", "/chk-ui-headless/profile");
     });
   });
@@ -48,7 +49,7 @@ describe("Cart flow", () => {
     cy.AddItemCart();
     cy.get('[data-test-id="button-cart"]').click();
     cy.get('[data-test-id="link-go-to-cart"]').click();
-    cy.get("#endPurchaseCart").click();
+    cy.get("#endPurchaseCart").should('be.visible').click();
     cy.url().should("contain", "/chk-ui-headless/email");
 
 

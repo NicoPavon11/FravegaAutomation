@@ -3,7 +3,7 @@ import { LoginSelectors } from "../../support/selectors/loginPage";
 describe("Login ", () => {
   beforeEach(() => {
     cy.visit("/mi-cuenta/");
-    cy.get(".category").first().click();
+    cy.get(".category").should('be.visible').first().click();
     cy.url().should(
       "contain",
       "/login?ReturnUrl=%2f_secure%2fmi-cuenta%2fdatos"
