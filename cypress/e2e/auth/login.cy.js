@@ -8,9 +8,6 @@ describe("Login ", () => {
       "contain",
       "/login?ReturnUrl=%2f_secure%2fmi-cuenta%2fdatos"
     );
-    cy.log('meudeus');
-    cy.log('meudeus');
-    cy.log('meudeus');
   });
 
   it("Right Credentials", () => {
@@ -18,7 +15,6 @@ describe("Login ", () => {
       cy.loginWithCredentials(user.email, user.password);
     });
     cy.url().should("contain", "/_secure/mi-cuenta/datos#/profile");
-    cy.wait(10000);
     cy.logout();
   });
 

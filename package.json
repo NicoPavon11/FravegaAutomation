@@ -8,16 +8,24 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cy:run": "cypress run --browser chrome --spec cypress/e2e/**/*.js --env allure=true",
-    "allure:report": "npx allure generate allure-results -o allure-report",
-    "allure:open": "npx allure open",
-    "test-entero": "npm run cy:run ; npm run allure:report && npm run allure:open",
-    "last" : "node run_all.js"
+    
+    "cy:run:all": "npm run allure:cleanResults && (cypress run --browser chrome --spec cypress/e2e/**/*.js --env allure=true || true) && npm run allure:results && npm run allure:open",
+    "cy:run:auth": "npm run allure:cleanResults && (cypress run --browser chrome --spec cypress/e2e/auth/*.js --env allure=true || true) && npm run allure:results && npm run allure:open",
+    "cy:run:cart": "npm run allure:cleanResults && (cypress run --browser chrome --spec cypress/e2e/cart/*.js --env allure=true || true) && npm run allure:results && npm run allure:open",
+    "cy:run:compare": "npm run allure:cleanResults && (cypress run --browser chrome --spec cypress/e2e/compare/*.js --env allure=true || true) && npm run allure:results && npm run allure:open",
+    "cy:run:location": "npm run allure:cleanResults && (cypress run --browser chrome --spec cypress/e2e/location/*.js --env allure=true || true) && npm run allure:results && npm run allure:open",
+    "cy:run:search": "npm run allure:cleanResults && (cypress run --browser chrome --spec cypress/e2e/search/*.js --env allure=true || true) && npm run allure:results && npm run allure:open",
+    
+    "allure:cleanReport": "rimraf allure-report",
+    "allure:cleanResults": "rimraf allure-results",
+    "allure:results": "npx allure generate allure-results --clean -o allure-report",
+    "allure:open": "npx allure open"
   },
   "devDependencies": {
     "@faker-js/faker": "^10.1.0",
     "@shelex/cypress-allure-plugin": "^2.41.2",
     "allure-commandline": "^2.34.1",
-    "cypress": "^15.7.0"
+    "cypress": "^15.7.0",
+    "rimraf": "^6.1.2"
   }
 }
