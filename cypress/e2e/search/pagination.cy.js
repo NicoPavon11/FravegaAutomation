@@ -1,6 +1,6 @@
 beforeEach(() => {
   cy.visit("");
-cy.cerrarCartel();});
+cy.cerrarCartel(1046);});
 
 describe("Pagination", () => {
   it("Pagination next page button", () => {

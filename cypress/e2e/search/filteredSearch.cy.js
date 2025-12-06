@@ -1,7 +1,7 @@
 beforeEach(() => {
 
   cy.visit("");
-cy.cerrarCartel();});
+cy.cerrarCartel(1046);});
 
 describe('Filtered Search',()=>{
     it("Filtered Search", () => {

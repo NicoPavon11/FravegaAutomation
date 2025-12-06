@@ -1,20 +1,18 @@
 beforeEach(() => {
 
   cy.visit("");
-cy.cerrarCartel();});
+  cy.cerrarCartel(1046);});
+
 
 describe("Location", () => {
-  // it("Change location by CP (Tres Arroyos 7500)", () => {
-  //   cy.get('[data-test-id="geo-sticky"]').should("be.visible").click();
-  //   cy.get('[data-test-id="header-geo-location-form-postal-number"]').type(
-  //     "7500"
-  //   );
-  //   cy.get('[data-test-id="geo-sticky"]').should(
-  //     "have.attr",
-  //     "title",
-  //     "Tres Arroyos"
-  //   );
-  // });
+  it("Change location by CP (Tres Arroyos 7500)", () => {
+    cy.cerrarCartel(7500);
+    cy.get('[data-test-id="geo-sticky"]').should(
+      "have.attr",
+      "title",
+      "Tres Arroyos"
+    );
+  });
 
   it("Pickup in store filter", () => {
     cy.searchByProductId("Aire");

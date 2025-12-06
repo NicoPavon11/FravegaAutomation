@@ -3,7 +3,7 @@ import { searchSelectors } from "../../support/selectors/search";
 
 beforeEach(() => {
   cy.visit("");
-  cy.cerrarCartel();
+  cy.cerrarCartel(1046);
 });
 
 describe("Search results ordered by price", () => {
